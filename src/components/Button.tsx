@@ -33,7 +33,7 @@ const Button: React.FC<Props> = ({
         `${
           outline
             ? "bg-[transparent] text-secondary border border-primary"
-            : "bg-primary text-[#FCFCFC]"
+            : "bg-secondary text-[#fff]"
         } rounded-[8px] transition-all duration-500 w-fit flex items-center place-items-center gap-4 py-3 px-5 ${
           large ? "md:text-xl" : small ? "" : "text-lg"
         } font-body font-[900] cursor-pointer`,
@@ -51,7 +51,7 @@ const Button: React.FC<Props> = ({
         `${
           outline
             ? "bg-[transparent] text-secondary border border-primary"
-            : "bg-primary text-[#FCFCFC]"
+            : "bg-secondary text-[#fff]"
         } rounded-[8px] transition-all leading-none duration-500  w-fit
       flex items-center place-items-center gap-4 py-3 px-5 ${
         large ? "md:text-xl" : small ? "text-sm py-1 px-2" : "text-lg"

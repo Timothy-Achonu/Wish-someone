@@ -10,16 +10,16 @@
 
 :root {
   --foreground-rgb: 100, 21, 75;
-  --background-start-rgb: 214, 119, 20;
-  --background-end-rgb: 255, 5, 55;
+  --background-start-hex: 155, 15, 201;
+  --background-end-hex: #A2B677;
   --scrollbar-background: 0, 0, 0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 155, 15, 201;
-    --background-start-rgb: 117, 10, 99;
-    --background-end-hex: 18, 33, 80;
+    --background-start-hex: #D6E7B4;
+    --background-end-hex: #A2B677;
     --scrollbar-background: 0, 0, 0;
   }
 }
@@ -29,9 +29,9 @@ body {
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      var(--background-end-hex)
     )
-    rgb(var(--background-start-rgb));
+   rgb(var(--background-start-hex));
 }
 
 .overflow-scroll::-webkit-scrollbar-thumb {

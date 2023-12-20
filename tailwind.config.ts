@@ -23,7 +23,10 @@ const config: Config = {
       colors: {
         primary: '#D6E7B4',
         secondary: '#A2B677',
-      }
+      },
+      boxShadow: {
+        'btn-primary': '4px 4px 0px 0px rgb(0, 0, 0)',
+      },
     },
   },
   plugins: [],
