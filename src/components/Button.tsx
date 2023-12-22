@@ -1,68 +1,81 @@
-import Link from "next/link";
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
+const button = cva(
+  [
+    "flex",
+    "items-center",
+    "justify-center",
+    "transition-all",
+    "leading-none",
+    "duration-[500ms]",
+    "w-fit",
+    "gap-4",
+    "place-items-center",
+    "transition-all",
+    "rounded-[8px]",
+  ],
+  {
+    variants: {
+      intent: {
+        primary: [
+          "bg-secondary",
+          "text-white",
+          "border-transparent",
+          "hover:scale-[1.02]",
+        ],
+        outline: [
+          "bg-transparent",
+          "text-secondary",
+          "border",
+          "border-primary",
+          "hover:bg-secondary",
+          "hover:text-white",
+          "hover:border-none",
+        ],
+        ghost: [
+          "bg-transparent",
+          "text-secondary",
+          "hover:bg-[rgba(0,0,0,0.3)]",
+        ],
+      },
+      size: {
+        small: ["text-[0.875rem]", "py-1", "px-2"],
+        medium: ["text-[1rem]", "py-3", "px-5"],
+        large: ["text-[1.125rem]", "py-3", "px-5", "font-[900]"],
+      },
+      btnType: {
+        btn: "",
+        icon: ["px-0", "py-0", "rounded-full"],
+      },
+    },
+    compoundVariants: [
+      { btnType: "icon", size: "small", class: "w-10 h-10" },
+      { btnType: "icon", size:"medium", class: "w-11 h-11" },
+      { btnType: "icon", size: "large", class: "w-[52px] h-[52px]" },
+    ],
+    defaultVariants: {
+      intent: "primary",
+      size: "large",
+      btnType: "btn",
+    },
+  }
+);
 
-interface Props
-  extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
-  href?: string;
-  small?: boolean;
-  large?: boolean;
-  scroll?: boolean;
-  outline?: boolean;
-  replace?: boolean;
-}
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof button> {}
 
-const Button: React.FC<Props> = ({
-  href,
-  small,
-  large,
+//Why does twMerge remove the leading-none styling??
+export const Button: React.FC<ButtonProps> = ({
   className,
-  scroll = true,
-  replace,
-  outline,
+  intent,
+  btnType,
+  size,
   ...props
-}) => {
-  return href ? (
-    <Link
-      scroll={scroll}
-      replace
-      className={twMerge(
-        `${
-          outline
-            ? "bg-[transparent] text-secondary border border-primary"
-            : "bg-secondary text-[#fff]"
-        } rounded-[8px] transition-all duration-500 w-fit flex items-center place-items-center gap-4 py-3 px-5 ${
-          large ? "md:text-xl" : small ? "" : "text-lg"
-        } font-body font-[900] cursor-pointer`,
-        !props.disabled && "hover:scale-[1.02] active:scale-[0.95]",
-        className
-      )}
-      href={href}
-    >
-      {props.children}
-    </Link>
-  ) : (
-    <button
-      {...props}
-      className={twMerge(
-        `${
-          outline
-            ? "bg-[transparent] text-secondary border border-primary"
-            : "bg-secondary text-[#fff]"
-        } rounded-[8px] transition-all leading-none duration-500  w-fit
-      flex items-center place-items-center gap-4 py-3 px-5 ${
-        large ? "md:text-xl" : small ? "text-sm py-1 px-2" : "text-lg"
-      } font-body font-[900] cursor-pointer`,
-        !props.disabled && "hover:scale-[1.02] active:scale-[0.95]",
-        className
-      )}
-    >
-      {props.children}
-    </button>
-  );
-};
-
-export default Button;
+}) => (
+  <button
+    className={twMerge(button({ intent, size, btnType, className }))}
+    {...props}
+  />
+);
