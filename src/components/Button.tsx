@@ -36,7 +36,7 @@ const button = cva(
         ghost: [
           "bg-transparent",
           "text-secondary",
-          "hover:bg-[rgba(0,0,0,0.3)]",
+          "hover:bg-[rgba(0,0,0,0.8)]",
         ],
       },
       size: {
