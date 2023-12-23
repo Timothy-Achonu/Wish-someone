@@ -23,6 +23,7 @@ const button = cva(
           "text-white",
           "border-transparent",
           "hover:scale-[1.02]",
+          'disabled:opacity-25',
         ],
         outline: [
           "bg-transparent",
@@ -32,11 +33,13 @@ const button = cva(
           "hover:bg-secondary",
           "hover:text-white",
           "hover:border-none",
+          'disabled:opacity-25',
         ],
         ghost: [
           "bg-transparent",
           "text-secondary",
           "hover:bg-[rgba(0,0,0,0.8)]",
+          'disabled:opacity-25',
         ],
       },
       size: {

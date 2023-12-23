@@ -18,12 +18,13 @@ export default function Home() {
           return (
             <>
               <div key={option} className="flex row gap-2">
-                {buttonSizes.map((size) => {
+                {buttonSizes.map((size, index) => {
                   return (
                     <Button
                       key={option}
                       intent={option}
                       size={size}
+                      disabled={index === 2}
                       className="shadow-btn-primary"
                     >
                       <span>Learn More</span>
@@ -40,13 +41,14 @@ export default function Home() {
           return (
             <>
               <div key={option} className="flex row gap-2">
-                {buttonSizes.map((size) => {
+                {buttonSizes.map((size, index) => {
                   return (
                     <Button
                       key={option}
                       btnType={"icon"}
                       intent={option}
                       size={size}
+                      disabled={index === 2}
                     >
                       <span>&rarr;</span>
                     </Button>
