@@ -1,21 +1,22 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-const inter = Inter({ subsets: ['latin'] })
+import type { Metadata } from "next";
+import { Playfair_Display } from "next/font/google";
+import "./globals.css";
+
+const playfairDisplay = Playfair_Display({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'WishSomeone',
+  title: "WishSomeone",
   description: "Celebrate someone's birthday, anniversary, graduation, etc",
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${playfairDisplay.className} bg-primary`}>{children}</body>
     </html>
-  )
+  );
 }

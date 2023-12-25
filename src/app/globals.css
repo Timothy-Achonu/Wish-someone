@@ -24,15 +24,14 @@
   }
 }
 
-body {
-  /* color: rgb(var(--foreground-rgb)); */
+/* body {
   background: linear-gradient(
       to bottom,
       transparent,
       var(--background-end-hex)
     )
    rgb(var(--background-start-hex));
-}
+} */
 
 .overflow-scroll::-webkit-scrollbar-thumb {
   background-color: #fbc665;

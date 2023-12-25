@@ -26,6 +26,7 @@ const config: Config = {
       },
       boxShadow: {
         'btn-primary': '4px 4px 0px 0px rgb(0, 0, 0)',
+        'navbar-primary': '0px 6px 0px 0px #000',
       },
     },
   },

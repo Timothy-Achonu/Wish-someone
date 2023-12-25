@@ -1,6 +1,7 @@
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 const button = cva(
   [
     "flex",
@@ -13,7 +14,7 @@ const button = cva(
     "gap-4",
     "place-items-center",
     "transition-all",
-    "rounded-[8px]",
+    "rounded-[4px]",
   ],
   {
     variants: {
@@ -23,6 +24,7 @@ const button = cva(
           "text-white",
           "border-transparent",
           "hover:scale-[1.02]",
+          "disabled:opacity-25",
         ],
         outline: [
           "bg-transparent",
@@ -32,16 +34,18 @@ const button = cva(
           "hover:bg-secondary",
           "hover:text-white",
           "hover:border-none",
+          "disabled:opacity-25",
         ],
         ghost: [
           "bg-transparent",
           "text-secondary",
           "hover:bg-[rgba(0,0,0,0.8)]",
+          "disabled:opacity-25",
         ],
       },
       size: {
         small: ["text-[0.875rem]", "py-1", "px-2"],
-        medium: ["text-[1rem]", "py-3", "px-5"],
+        medium: ["text-[1rem]", "py-3", "px-4", "font-[500]"],
         large: ["text-[1.125rem]", "py-3", "px-5", "font-[900]"],
       },
       btnType: {
@@ -51,12 +55,12 @@ const button = cva(
     },
     compoundVariants: [
       { btnType: "icon", size: "small", class: "w-10 h-10" },
-      { btnType: "icon", size:"medium", class: "w-11 h-11" },
+      { btnType: "icon", size: "medium", class: "w-11 h-11" },
       { btnType: "icon", size: "large", class: "w-[52px] h-[52px]" },
     ],
     defaultVariants: {
       intent: "primary",
-      size: "large",
+      size: "medium",
       btnType: "btn",
     },
   }
@@ -64,7 +68,11 @@ const button = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof button> {}
+    VariantProps<typeof button> {
+  isLink?: boolean;
+  href?: string;
+  children: React.ReactNode;
+}
 
 //Why does twMerge remove the leading-none styling??
 export const Button: React.FC<ButtonProps> = ({
@@ -72,10 +80,20 @@ export const Button: React.FC<ButtonProps> = ({
   intent,
   btnType,
   size,
+  isLink,
+  href,
+  children,
   ...props
-}) => (
-  <button
-    className={twMerge(button({ intent, size, btnType, className }))}
-    {...props}
-  />
-);
+}) => {
+  return isLink ? (
+    <Link
+      href={href ? href : "/about"}
+      className={twMerge(button({ intent, size, btnType, className }))}
+    > {children} </Link>
+  ) : (
+    <button
+      className={twMerge(button({ intent, size, btnType, className }))}
+      {...props}
+    />
+  );
+};
