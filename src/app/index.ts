@@ -1,1 +1,1 @@
-export *  from '@/components/Heading'
+export *  from '@/components/atoms/Heading'

@@ -1,7 +1,7 @@
-import Heading from "@/components/Heading";
-import { Button } from "@/components/Button";
+import Heading from "@/components/atoms/Heading";
+import { Button } from "@/components/atoms/Button";
 
-import { ButtonProps } from "@/components/Button";
+import { ButtonProps } from "@/components/atoms/Button";
 
 const buttonOptions: ButtonProps["intent"][] = ["primary", "outline", "ghost"];
 const buttonSizes: ButtonProps["size"][] = ["small", "medium", "large"];
